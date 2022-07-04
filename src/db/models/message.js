@@ -1,8 +1,21 @@
-const client = require('../index');
+const mongoose = require("mongoose");
 
-
-module.exports = () => {
-  const db = client();
-
-  return db.collection('messages');
+const messageSchema = new mongoose.Schema({
+body:{
+  type:String,
+  required:true,
+},
+author_id:{
+  type:mongoose.ObjectId,
+  required:true,
+},
+to_user_id:{
+  type:mongoose.ObjectId,
+  required:true,
 }
+
+});
+
+const messages = mongoose.model("messages", messageSchema);
+
+module.exports = messages;
