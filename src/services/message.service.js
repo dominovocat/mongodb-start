@@ -39,7 +39,7 @@ module.exports.findUserById = async (id) => {
   }
 };
 
-    module.exports.findUsers = async (filter, page = 1, rows = 10) => {
+    module.exports.findMessage = async (filter, page = 1, rows = 10) => {
       try {
         const User = userModel();
     
@@ -53,16 +53,3 @@ module.exports.findUserById = async (id) => {
         console.log(error);
       }
     };
-
-    // module.exports.updateUserById = async (id,data) => {
-    //   try {
-    //     const User = userModel();
-    //     const updatedUser =await User.updateOne({_id:ObjectId(id)},{$set:{...data}});
-        
-    //     const foundUser = await User.findOne({_id:ObjectId(id)});
-
-    //     return foundUser;
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // };

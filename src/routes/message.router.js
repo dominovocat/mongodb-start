@@ -2,7 +2,7 @@ const { Router } = require('express');
 const { createUserContr, deleteUserContr, findUserContr, findUsersByIdContr } = require("../controllers/user.contr");
 
 // /api/users
-const userRouter = Router();
+const messageRouter = Router();
 
 userRouter.post('/', createUserContr);
 
@@ -13,4 +13,4 @@ userRouter.patch('/', updateUserContr);
 
 userRouter.delete('/:id', deleteUserContr);
 
-module.exports = userRouter;
+module.exports = messageRouter;
