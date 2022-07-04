@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const userModel = require('../db/models/user');
 
 module.exports.createUser = async (data) => {
@@ -8,6 +9,42 @@ module.exports.createUser = async (data) => {
     // result.insertedId
 
     return result.insertedId;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports.deletedUserById = async (id) => {
+  try {
+    const User = userModel();
+
+    const result = await User.deleteOne({_id:ObjectId});
+
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports.deletedUserById = async (id) => {
+  try {
+    const User = userModel();
+
+    const result = await User.deleteOne({_id:ObjectId});
+
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports.findUserById = async (id) => {
+  try {
+    const User = userModel();
+
+    const result = await User.findOne({_id:ObjectId(id)});
+
+    return result;
   } catch (error) {
     console.log(error);
   }

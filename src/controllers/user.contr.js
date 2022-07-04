@@ -1,4 +1,4 @@
-const { createUser } = require("../services/user.service");
+const { createUser,deletedUserById, findUserById} = require("../services/user.service");
 
 module.exports.createUserContr = async (req, res, next) => {
   try {
@@ -14,11 +14,23 @@ module.exports.createUserContr = async (req, res, next) => {
 
 module.exports.deleteUserContr = async (req, res, next) => {
   try {
-    const data = req.params.id;
+    const id = req.params.id;
 
-    const createdUser = await createUser(data);
+    const deletedUser = await deletedUserById(id);
 
-    res.status(200).send({ data: createdUser });
+    res.status(200).send({ data: deletedUser });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.findUserContr = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+
+    const findUser = await findUserById(id);
+
+    res.status(200).send({ data: findUser });
   } catch (error) {
     next(error);
   }
