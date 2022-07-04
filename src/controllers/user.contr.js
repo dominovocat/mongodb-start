@@ -11,3 +11,15 @@ module.exports.createUserContr = async (req, res, next) => {
     next(error);
   }
 };
+
+module.exports.deleteUserContr = async (req, res, next) => {
+  try {
+    const data = req.params.id;
+
+    const createdUser = await createUser(data);
+
+    res.status(200).send({ data: createdUser });
+  } catch (error) {
+    next(error);
+  }
+};
