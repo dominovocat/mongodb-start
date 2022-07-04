@@ -35,3 +35,17 @@ module.exports.findUserContr = async (req, res, next) => {
     next(error);
   }
 };
+
+module.exports.findUsersByIdContr = async (req, res, next) => {
+  try {
+    const filter = req.body;
+    const page = req.query.page;
+    const rows = req.query.rows;
+
+    const users = await findUsers(filter, page, rows);
+
+    res.status(200).send({ data: users });
+  } catch (error) {
+    next(error);
+  }
+};
