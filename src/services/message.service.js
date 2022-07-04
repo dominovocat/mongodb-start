@@ -1,11 +1,11 @@
 const { ObjectId } = require("mongodb");
-const userModel = require("../db/models/user");
+const MessageModel = require("../db/models/message");
 
-module.exports.createUser = async (data) => {
+module.exports.createMessage = async (data) => {
   try {
-    const User = userModel();
+    const Message = MessageModel();
 
-    const result = await User.insertOne(data);
+    const result = await Message.insertOne(data);
     // result.insertedId
 
     return result.insertedId;
@@ -14,11 +14,11 @@ module.exports.createUser = async (data) => {
   }
 };
 
-module.exports.deletedUserById = async (id) => {
+module.exports.deletedMessageById = async (id) => {
   try {
-    const User = userModel();
+    const Message = MessageModel();
 
-    const result = await User.deleteOne({ _id: ObjectId });
+    const result = await Message.deleteOne({ _id: ObjectId });
 
     return result;
   } catch (error) {
@@ -27,11 +27,11 @@ module.exports.deletedUserById = async (id) => {
 };
 
 
-module.exports.findUserById = async (id) => {
+module.exports.findMessageById = async (id) => {
   try {
-    const User = userModel();
+    const Message = MessageModel();
     
-    const result = await User.findOne({ _id: ObjectId(id) });
+    const result = await Message.findOne({ _id: ObjectId(id) });
 
     return result;
   } catch (error) {
@@ -41,9 +41,9 @@ module.exports.findUserById = async (id) => {
 
     module.exports.findMessage = async (filter, page = 1, rows = 10) => {
       try {
-        const User = userModel();
+        const Message = MessageModel();
     
-        const result = await User.find(filter)
+        const result = await Message.find(filter)
           .skip((page - 1) * rows)
           .limit(rows)
           .toArray();

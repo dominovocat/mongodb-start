@@ -1,16 +1,16 @@
 const { Router } = require('express');
-const { createUserContr, deleteUserContr, findUserContr, findUsersByIdContr } = require("../controllers/user.contr");
+const { createMessageContr, deleteMessageContr, findMessageContr, findMessagesByIdContr } = require("../controllers/message.contr");
 
-// /api/users
-const messageRouter = Router();
+// /api/Messages
+const MessageRouter = Router();
 
-userRouter.post('/', createUserContr);
+MessageRouter.post('/', createMessageContr);
 
-userRouter.get('/:id', findUserContr);
-userRouter.get('/:id', findUsersByIdContr);
+MessageRouter.get('/:id', findMessageContr);
+MessageRouter.get('/:id', findMessagesByIdContr);
 
-userRouter.patch('/', updateUserContr);
+//MessageRouter.patch('/', updateMessageContr);
 
-userRouter.delete('/:id', deleteUserContr);
+MessageRouter.delete('/:id', deleteMessageContr);
 
-module.exports = messageRouter;
+module.exports = MessageRouter;

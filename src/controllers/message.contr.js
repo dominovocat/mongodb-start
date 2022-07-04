@@ -1,50 +1,50 @@
-const { createUser,deletedUserById, findUserById} = require("../services/user.service");
+const { createMessage,deletedMessageById, findMessageById} = require("../services/message.service");
 
-module.exports.createUserContr = async (req, res, next) => {
+module.exports.createMessageContr = async (req, res, next) => {
   try {
     const data = req.body;
 
-    const createdUser = await createUser(data);
+    const createdMessage = await createMessage(data);
 
-    res.status(200).send({ data: createdUser });
+    res.status(200).send({ data: createdMessage });
   } catch (error) {
     next(error);
   }
 };
 
-module.exports.deleteUserContr = async (req, res, next) => {
+module.exports.deleteMessageContr = async (req, res, next) => {
   try {
     const id = req.params.id;
 
-    const deletedUser = await deletedUserById(id);
+    const deletedMessage = await deletedMessageById(id);
 
-    res.status(200).send({ data: deletedUser });
+    res.status(200).send({ data: deletedMessage });
   } catch (error) {
     next(error);
   }
 };
 
-module.exports.findUserContr = async (req, res, next) => {
+module.exports.findMessageContr = async (req, res, next) => {
   try {
     const id = req.params.id;
 
-    const findUser = await findUserById(id);
+    const findMessage = await findMessageById(id);
 
-    res.status(200).send({ data: findUser });
+    res.status(200).send({ data: findMessage });
   } catch (error) {
     next(error);
   }
 };
 
-module.exports.findUsersByIdContr = async (req, res, next) => {
+module.exports.findMessagesByIdContr = async (req, res, next) => {
   try {
     const filter = req.body;
     const page = req.query.page;
     const rows = req.query.rows;
 
-    const users = await findUsers(filter, page, rows);
+    const Messages = await findMessages(filter, page, rows);
 
-    res.status(200).send({ data: users });
+    res.status(200).send({ data: Messages });
   } catch (error) {
     next(error);
   }

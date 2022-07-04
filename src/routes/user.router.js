@@ -9,7 +9,7 @@ userRouter.post('/', createUserContr);
 userRouter.get('/:id', findUserContr);
 userRouter.get('/:id', findUsersByIdContr);
 
-userRouter.patch('/', updateUserContr);
+//userRouter.patch('/', updateUserContr);
 
 userRouter.delete('/:id', deleteUserContr);
 
