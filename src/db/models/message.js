@@ -8,10 +8,12 @@ body:{
 author_id:{
   type:mongoose.ObjectId,
   required:true,
+  ref:"users",
 },
 to_user_id:{
   type:mongoose.ObjectId,
   required:true,
+  ref:"users",
 }
 
 });
