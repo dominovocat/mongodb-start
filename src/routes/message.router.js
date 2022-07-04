@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { createMessageContr, deleteMessageContr, findMessageContr, findMessagesByIdContr } = require("../controllers/message.contr");
+const { createMessageValidateBodyMw } = require('../middlewares/message.mw');
 
 // /api/Messages
 const MessageRouter = Router();
