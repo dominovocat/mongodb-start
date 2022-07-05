@@ -4,6 +4,7 @@ import { Formik, Form, Field } from "formik";
 function Chat() {
 
   const initialData={
+    author_id:'',
     body:'',
   }
   const handlerSubmit=()=>{};
@@ -17,6 +18,7 @@ function Chat() {
         {(formikProps) => {
           return (
             <Form>
+              <Field type="text" name="author_id"/>
               <Field type="text" name="body"/>
               <button type="submit"></button>
             </Form>
