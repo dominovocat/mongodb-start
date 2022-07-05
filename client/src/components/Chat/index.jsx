@@ -1,30 +1,20 @@
 import React from "react";
-import { Formik, Form, Field } from "formik";
+import ChatForm from "../ChatForm";
+import MessageList from "../MessageList";
+
+
 //rfce
 function Chat() {
 
-  const initialData={
-    author_id:'',
-    body:'',
-  }
-  const handlerSubmit=()=>{};
+
+  const handlerSubmit=()=>{
+    //send data to server
+  };
 
   return (
     <div>
-      <Formik
-      initialValues={initialData}
-      onSubmit={handlerSubmit}
-      >
-        {(formikProps) => {
-          return (
-            <Form>
-              <Field type="text" name="author_id"/>
-              <Field type="text" name="body"/>
-              <button type="submit"></button>
-            </Form>
-          );
-        }}
-      </Formik>
+      <MessageList list={[]}/>
+      <ChatForm onSubmit={handlerSubmit}/>
     </div>
   );
 }
