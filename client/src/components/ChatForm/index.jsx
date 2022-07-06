@@ -1,4 +1,4 @@
-import { Field, Form } from "formik";
+import { Formik,Field, Form } from "formik";
 import React from "react";
 
 function ChatForm(props) {
@@ -15,9 +15,9 @@ function ChatForm(props) {
         {(formikProps) => {
           return (
             <Form>
-              <Fieldld type="text" name="author_id" />
+              <Field type="text" name="author_id" />
               <Field type="text" name="body" />
-              <button type="submit"></button>
+              <button type="submit">Click</button>
             </Form>
           );
         }}
