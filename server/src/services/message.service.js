@@ -66,21 +66,22 @@ const { User, Message } = require("../db/");
 
 module.exports.createMessage = async (data) => {
   // check if author and user_to exists
-  const author = await User.findById(data.author_id).exec();
+  const author = await User.findOne({_id:data.author_id});
 
   if (!author) {
     throw new Error("404 Author not found");
   }
-
+if(data.to_user_id){
   const interlocutor = await User.findById(data.to_user_id).exec();
   if (!interlocutor) {
     throw new Error("404 Interlocutor not found");
-  }
+  }}
 
   const result = await Message.create(data);
   // result.insertedId
+  const message = {...result.toObject(),author}
 
-  return result;
+  return message;
 };
 
 module.exports.deleteMessageById = async (id) => {

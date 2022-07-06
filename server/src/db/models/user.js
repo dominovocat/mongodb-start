@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema({
   firstname: {
@@ -21,17 +22,25 @@ const userSchema = new mongoose.Schema({
     city: {
       type: String,
       required: true,
-      enum:["USA","Canada","Brazil","Mexico","Cuba"]
+
     },
     country: {
       type: String,
+      enum:["USA","Canada","Brazil","Mexico","Cuba"]
     },
   },
   createdAt: {
     type: Date,
   },
+  password: {
+    type: String, // TEXT
+    required: true,
+    set: (password) => {
+      const pass_hash = bcrypt.hashSync(password, 10);
+      return pass_hash;
+    },
+  },
 });
-
 const User = mongoose.model("users", userSchema);
 
 module.exports = User;

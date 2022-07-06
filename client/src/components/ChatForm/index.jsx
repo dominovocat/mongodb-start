@@ -12,7 +12,7 @@ function ChatForm(props) {
       <Formik 
       initialValues={initialData} 
       onSubmit={props.onSubmit}>
-        {(formikProps) => {
+        {() => {
           return (
             <Form>
               <Field type="text" name="author_id" />

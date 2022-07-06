@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+
 const attachmentsSchema = new mongoose.Schema({
   link: {
     type: String,
@@ -24,7 +25,6 @@ const messageSchema = new mongoose.Schema({
   },
   to_user_id: {
     type: mongoose.ObjectId,
-    required: true,
     ref: "users",
   },
   isRed: {

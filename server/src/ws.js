@@ -1,9 +1,10 @@
 const { Server } = require("socket.io");
+const { createMessage } = require("./services/message.service");
 
 const eventTypes = {
   HELLO: "hello",
   NEW_MESSAGE: "newMessage",
-  SEND_MESSAGE:"sendMessage",
+  SEND_MESSAGE: "sendMessage",
 };
 
 module.exports = (httpServer) => {
@@ -20,17 +21,17 @@ module.exports = (httpServer) => {
     console.log("some user has connected");
     //socket.emit(eventTypes.HELLO, { data: "test" });
 
-    socket.on(eventTypes.SEND_MESSAGE, (data) => {
+    socket.on(eventTypes.SEND_MESSAGE, async (data) => {
       //console.log("someone say`s", data);
-    //});
+      //});
+      const createdMessage = await createMessage(data);
+      // setTimeout(() => {
+      //   socket.emit(eventTypes.NEW_MESSAGE, { body: "hello msg", _id: "1239" });
+      // }, 2000);
+      // socket.on(eventTypes.SEND_MESSAGE,(data)=>{
+      //   //messageService.creatMsg(data);
 
-    // setTimeout(() => {
-    //   socket.emit(eventTypes.NEW_MESSAGE, { body: "hello msg", _id: "1239" });
-    // }, 2000);
-    // socket.on(eventTypes.SEND_MESSAGE,(data)=>{
-    //   //messageService.creatMsg(data);
-
-      io.emit(eventTypes.NEW_MESSAGE,data);
+      io.emit(eventTypes.NEW_MESSAGE, createdMessage);
       console.log(data);
     });
   });

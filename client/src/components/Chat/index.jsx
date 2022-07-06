@@ -10,8 +10,8 @@ function Chat() {
   const [messages,setMessages]=useState([]);
 
   useEffect(()=>{
-   addSubscriber('newMessage',(msg)=>{
-      setMessages(prev => [...prev,msg]);
+   addSubscriber('newMessage',(message)=>{
+      setMessages(prev => [...prev,message]);
     });
   },[])
   const handlerSubmit=(values,formikBag)=>{
